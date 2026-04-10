@@ -9,6 +9,7 @@ namespace Ucu.Poo.Restaurant
     /// </summary>
     public class Table
     {
+        // Table contiene una Order 
         public Order currentOrder
         {
             get; set;
@@ -25,6 +26,8 @@ namespace Ucu.Poo.Restaurant
             get {return occupied;}
             set {occupied = value;}
         }
+
+        // Table cambia su estado a "occupied" y crea una nueva Order
         public void Occupy()
         {
             if (!occupied)
@@ -33,6 +36,8 @@ namespace Ucu.Poo.Restaurant
               currentOrder = new Order(); 
             }
         }
+
+        // Table se libera ("occupied" vuelve a false) y se descarta la Order actual
         public void Free()
         {
             if (occupied)
@@ -41,15 +46,20 @@ namespace Ucu.Poo.Restaurant
                 currentOrder = null;
             }
         }
+
+        // Table NO gestiona la lista, lo hace order
         public void AddToOrder(Dish dish)
         {
             currentOrder.AddToOrder(dish);
         }
+
+        // Builder de la mesa, asignándole un numero
         public Table (int number)
         {
             this.Number = number;
         }
 
+        // Obtiene el calculo total de la orden, pero el calculo lo realiza Order
         public double GetTotal()
         {
             if (currentOrder != null)

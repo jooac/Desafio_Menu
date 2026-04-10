@@ -1,11 +1,12 @@
 namespace Ucu.Poo.Restaurant
 {
-
     /// <summary>
     /// Representa un platillo individual en el menú del restaurante.
     /// </summary>
     public class Dish
     {
+        // Solo contiene datos del plato
+
         private string name;
         public string Name
         {
@@ -13,6 +14,7 @@ namespace Ucu.Poo.Restaurant
             set {name = value;}
         }
 
+        // Solo dish conoce su precio pero lo hace accesible a modificar
         private double price;
         public double Price
         {
@@ -20,6 +22,7 @@ namespace Ucu.Poo.Restaurant
             set {price = value;}
         }
 
+        // Propiedad booleana para saber si el plato es vegetariano o no, respetando encapsulación
         private bool vegetarian;
         public bool IsVegetarian
         {
@@ -27,6 +30,7 @@ namespace Ucu.Poo.Restaurant
             set {vegetarian = value;}
         }
 
+        // Permite inicializar todo en una sola operación
         public Dish(string name, double price, bool vegetarian)
         {
             this.Name = name;

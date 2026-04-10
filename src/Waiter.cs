@@ -7,6 +7,7 @@ namespace Ucu.Poo.Restaurant
     /// </summary>
     public class Waiter
     {
+        // Waiter gestiona las mesas que atiende
         private List<Table> assignedTables = new List<Table>();
 
         private string name;
@@ -16,11 +17,13 @@ namespace Ucu.Poo.Restaurant
             set {name = value;}
         }
 
+        // Waiter asigna las mesas porque él las conoce
         public void AssignTable(Table table)
         {
             assignedTables.Add(table);
         }
 
+        // Waiter no maneja pedidos directamente, usa Table
         public void TakeOrder(Table table, Dish dish)
         {
             table.AddToOrder(dish);
