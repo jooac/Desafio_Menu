@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using System.Globalization;
+using System.Runtime.CompilerServices;
 
 namespace Ucu.Poo.Restaurant
 {
@@ -7,11 +9,54 @@ namespace Ucu.Poo.Restaurant
     /// </summary>
     public class Table
     {
-        private List<Dish> order = new List<Dish>();
-
-        public bool HasOrders()
+        public Order currentOrder
         {
-            return this.order.Count > 0;
+            get; set;
+        }
+        private int number;
+        public int Number
+        {
+            get {return number;}
+            set {number = value;}
+        }
+        private bool occupied;
+        public bool IsOccupied
+        {
+            get {return occupied;}
+            set {occupied = value;}
+        }
+        public void Occupy()
+        {
+            if (!occupied)
+            {
+              occupied = true;
+              currentOrder = new Order(); 
+            }
+        }
+        public void Free()
+        {
+            if (occupied)
+            {
+                occupied = false;
+                currentOrder = null;
+            }
+        }
+        public void AddToOrder(Dish dish)
+        {
+            currentOrder.AddToOrder(dish);
+        }
+        public Table (int number)
+        {
+            this.Number = number;
+        }
+
+        public double GetTotal()
+        {
+            if (currentOrder != null)
+            {
+                return currentOrder.GetTotal();
+            }
+            return 0;
         }
     }
 }
